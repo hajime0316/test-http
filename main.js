@@ -22,6 +22,28 @@ async function main() {
   }
 
   const $submitButton = document.getElementById('submit-button');
+
+  $submitButton.addEventListener('click', async () => {
+    let $showResponse = document.getElementById('show-response');
+    const hospitalName = document.getElementsByTagName('input')[0].value;
+    const spreadSheetName = document.getElementsByTagName('input')[1].value;
+
+    $showResponse.textContent = '通信中...';
+
+    const spreadSheetUrls = {
+      ward_danger: urlWardDanger,
+      life_line_supply: urlLifeLineSupply,
+      patient_medical_examination: urlPatientMedicalExamination,
+      staff_number: urlStaffNumber,
+      other: urlOther,
+    }
+
+    // Googleスプレッドシートから病院のデータを取ってくる
+    const data = await getHospitalData(spreadSheetUrls[spreadSheetName], hospitalName);
+
+    // 取得したデータを表示
+    $showResponse.textContent = '[' + data.join() + '] を受信しました';
+  })
 }
 
 main();
