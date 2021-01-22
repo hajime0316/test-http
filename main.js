@@ -6,10 +6,10 @@ const urlStaffNumber = 'https://script.google.com/macros/s/AKfycbzAHB2JNiJjGrePN
 const urlOther = 'https://script.google.com/macros/s/AKfycbzd_yM_eB0T7_-fQFEla2EuoefCD1P7dXNmjzEeqZp1xFQ2L-qEXWcs/exec';
 
 async function main() {
-  const $button = document.getElementById('hospital-buttons').getElementsByTagName('button');
+  const $hospitalButton = document.getElementById('hospital-buttons').getElementsByTagName('button');
 
-  for (let i = 0; i < $button.length; i++) {
-    $button[i].addEventListener('click', async (e) => {
+  for (let i = 0; i < $hospitalButton.length; i++) {
+    $hospitalButton[i].addEventListener('click', async (e) => {
       let $showResponse = document.getElementById('show-response');
       $showResponse.textContent = '通信中...';
 
@@ -20,6 +20,8 @@ async function main() {
       $showResponse.textContent = '[' + data.join() + '] を受信しました';
     });
   }
+
+  const $submitButton = document.getElementById('submit-button');
 }
 
 main();
