@@ -9,7 +9,7 @@ async function main() {
       $showResponse.textContent = '通信中...';
 
       // Googleスプレッドシートから病院のデータを取ってくる
-      const data = await getHospitalData(urlLifeLineSupply, e.target.textContent);
+      const data = await getHospitalData('life_line_supply', e.target.textContent);
 
       // 取得したデータを表示
       $showResponse.textContent = '[' + data.join() + '] を受信しました';
