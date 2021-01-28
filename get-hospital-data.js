@@ -1,6 +1,6 @@
 /**
  * @brief  Googleスプレッドシートから病院のデータを取得する
- * @param  sheetName Googleスプレッドシート (GASアプリ) へのURL
+ * @param  sheetName スプレッドシート名（'ward_danger', 'life_line_supply' etc）
  * @param  hospitalName 病院名
  * @return 指定した病院の最新のデータが格納された配列
  */
