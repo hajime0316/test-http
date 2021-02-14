@@ -20,5 +20,5 @@ async function getHospitalData(sheetName = '', hospitalName = '') {
   })
   const text = await response.text();
 
-  return text !== '' ? text.split() : null;
+  return text !== '' ? text.split(',') : null;
 }
