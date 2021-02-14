@@ -29,7 +29,9 @@ async function main() {
     const data = await getHospitalData(spreadSheetName, hospitalName);
 
     // 取得したデータを表示
-    $showResponse.textContent = '[' + data.join() + '] を受信しました';
+    $showResponse.textContent = (data !== null)
+      ? '[' + data.join() + '] を受信しました'
+      : '有効なデータが取得できませんでした';
   })
 }
 
