@@ -3,7 +3,9 @@
  * @param  sheetName スプレッドシート名（'ward_danger', 'life_line_supply' etc）
  * @param  hospitalName 病院名
  * @return 指定した病院の最新のデータが格納された配列
+ *         指定した病院のデータがない場合はnullを返す
  */
+
 async function getHospitalData(sheetName = '', hospitalName = '') {
   const sheetUrls = {
     ward_danger: 'https://script.google.com/macros/s/AKfycbxB-Iu7Vr8jXVA9O067KBdXzIEP83bMMkmYUz1nvpTvvcYpNy5vKXnZ/exec',
@@ -16,5 +18,12 @@ async function getHospitalData(sheetName = '', hospitalName = '') {
   const response = await fetch(sheetUrls[sheetName] + '?hospitalName=' + hospitalName, {
     method: 'GET',
   })
-  return (await response.text()).split(',');
+  const text = await response.text();
+
+  if (text === '') {
+    return null;
+  }
+  else {
+    return text.split(',');
+  }
 }
